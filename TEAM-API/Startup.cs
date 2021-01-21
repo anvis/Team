@@ -8,11 +8,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
+using Swashbuckle.AspNetCore.Swagger;
 
 
 namespace TEAM_API
@@ -32,6 +29,7 @@ namespace TEAM_API
             services.AddDbContext<TeamContext>(opt => opt.UseInMemoryDatabase("TeamDB",null));
             services.AddAutoMapper(typeof(Startup));
             services.AddTransient<ITournamentService, TournamentService>();
+            services.AddSwaggerGen();
             services.AddControllers();
            
         }
@@ -47,6 +45,12 @@ namespace TEAM_API
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+            });
 
             app.UseEndpoints(endpoints =>
             {
