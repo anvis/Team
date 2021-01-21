@@ -9,6 +9,7 @@
     {
         private bool disposed = false;
         private TournamentRepository tournamentRepository;
+        private ConfigurationRepository configurationRepository;
         public TeamContext Context { get; } = new TeamContext();
 
         
@@ -24,9 +25,21 @@
                 {
                     this.tournamentRepository = RepositoryInstance<TournamentRepository>.GetInstance();
                     tournamentRepository.Repository = new Repository<Tournment>(Context);
-                    //  watchlistRepository.Context = context;
                 }
                 return tournamentRepository;
+            }
+        }
+
+        public IConfigurationRepository ConfigurationRepository
+        {
+            get
+            {
+                if (this.configurationRepository == null)
+                {
+                    this.configurationRepository = RepositoryInstance<ConfigurationRepository>.GetInstance();
+                    configurationRepository.Repository = new Repository<Configurations>(Context);
+                }
+                return configurationRepository;
             }
         }
 
