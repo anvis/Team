@@ -1,4 +1,5 @@
-﻿using DataLayer.Models;
+﻿
+using EntityLayer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -20,15 +21,21 @@ namespace TEAM_API.Controllers
         {
             _logger = logger;
             _tournamentService = tournamentService;
-
-            //test checkin
         }
 
-        public async Task<ActionResult<IEnumerable<Tournment>>> Get()
+        [HttpGet]
+        [Route("CreateTournment")]
+        public List<Tournament> CreateTournment()
         {
-            //var tournmemnt= _tournamentService.GetTournaments();
-            // return Ok(tournmemnt);
-            return null;
+            try
+            {
+                return _tournamentService.CreateTournaments();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
     }

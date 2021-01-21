@@ -12,6 +12,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+
 
 namespace TEAM_API
 {
@@ -27,9 +29,11 @@ namespace TEAM_API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-          //  services.AddDbContext<Context>(opt => opt.UseInMemoryDatabase());
+            services.AddDbContext<TeamContext>(opt => opt.UseInMemoryDatabase("TeamDB",null));
+            services.AddAutoMapper(typeof(Startup));
+            services.AddTransient<ITournamentService, TournamentService>();
             services.AddControllers();
-            services.AddSingleton<TournamentService, TournamentService>();
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

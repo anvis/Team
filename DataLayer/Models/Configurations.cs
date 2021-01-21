@@ -2,7 +2,7 @@
 {
     public class Configurations
     {
-        public int ConfigurationId { get; set; }
+        public int ConfigurationsId { get; set; }
         public int MaxBatsmensAllowed { get; set; }
         public int MaxBowlersAllowed { get; set; }
         public int MaxAllRoundersAllowed { get; set; }

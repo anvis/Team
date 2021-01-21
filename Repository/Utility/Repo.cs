@@ -10,8 +10,11 @@
         private bool disposed = false;
         private TournamentRepository tournamentRepository;
         public TeamContext Context { get; } = new TeamContext();
+
+        
         public Repo()
-        {            
+        {
+           
         }
         public ITournamentRepository TournamentRepository
         {

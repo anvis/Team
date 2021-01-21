@@ -27,11 +27,14 @@ namespace Repository
                 Teams = null
             });
 
+
             List<Tournament_DL> tournament_DLs = new List<Tournament_DL>();
 
 
             foreach (var item in tournments)
             {
+                Repository.Insert(item);                
+
                 tournament_DLs.Add(new Tournament_DL
                 {
                     ConfigurationId = item.ConfigurationId,
@@ -39,8 +42,14 @@ namespace Repository
                     TournmentCode = item.TournmentCode
                 });
             }
-
+            Repository.SaveAllChanges();
+            getTournments();
             return tournament_DLs;
+        }
+
+        public void getTournments()
+        {
+            var watchListList = Repository.GetAll();
         }
     }
 }
