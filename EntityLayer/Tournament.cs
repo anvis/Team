@@ -2,7 +2,7 @@
 
 namespace EntityLayer
 {
-    public class Class1
+    public class Tournament
     {
     }
 }
