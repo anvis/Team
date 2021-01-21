@@ -23,7 +23,7 @@ namespace TEAM_API.Controllers
             _tournamentService = tournamentService;
         }
 
-        [HttpGet]
+        [HttpGet] 
         [Route("CreateTournment")]
         public List<Tournament> CreateTournment()
         {

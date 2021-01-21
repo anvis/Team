@@ -1,5 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using EntityLayer;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +15,31 @@ namespace TEAM_API.Controllers
     [ApiController]
     public class TeamsController : ControllerBase
     {
+        private ITeamService _teamService;
+        private IMapper _mapper;
+
+        private readonly ILogger<TeamsController> _logger;
+       
+        public TeamsController(ILogger<TeamsController> logger, ITeamService teamService)
+        {
+            _logger = logger;
+            _teamService = teamService;
+        }
+
+        [HttpPost]
+        [Route("Team")]
+        public Team CreateTeam(Team team)
+        {
+            try
+            {
+                return _teamService.CreateTeam(team);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
     }
 }
+     
