@@ -4,12 +4,12 @@ using System.Text;
 
 namespace Services
 {
-   public class TournmentService
+   public class TournamentService:ITournamentService
     {
         unitofwork uow = new unitofwork();
         private IMapper _mapper;
 
-        public TournmentService(IMapper mapper)
+        public TournamentService(IMapper mapper)
         {
             _mapper = mapper;
         }
@@ -23,6 +23,12 @@ namespace Services
         {
             List<SectorsDTO> sectorDTOs = uow.StockRepository.GetSectors();
             return MapperProfile.MapList<SectorsDTO, Sectors>(_mapper, sectorDTOs);
+        }
+
+        public List<Tournment> GetTournaments()
+        {
+            return null;
+        
         }
     }
 }
