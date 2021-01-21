@@ -26,8 +26,9 @@ namespace TEAM_API.Controllers
 
         public async Task<ActionResult<IEnumerable<Tournment>>> Get()
         {
-           var tournmemnt= _tournamentService.GetTournaments();
-            return Ok(tournmemnt);
+            //var tournmemnt= _tournamentService.GetTournaments();
+            // return Ok(tournmemnt);
+            return null;
         }
 
     }

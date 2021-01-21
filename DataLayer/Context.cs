@@ -3,9 +3,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataLayer
 {
-    public  class Context : DbContext
+    public  class TeamContext : DbContext
     {
-        public Context(DbContextOptions<Context> options)
+        public TeamContext()
+        {
+        }
+
+        public TeamContext(DbContextOptions<TeamContext> options)
             : base(options)
         {
         }

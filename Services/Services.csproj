@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EntityLayer\EntityLayer.csproj" />
+    <ProjectReference Include="..\Repository\Repository.csproj" />
   </ItemGroup>
 
 </Project>

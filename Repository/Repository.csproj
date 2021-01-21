@@ -5,7 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DataLayer\DataLayer.csproj" />
     <ProjectReference Include="..\DomainEntity\DomainEntity.csproj" />
+    <ProjectReference Include="..\RepositoryCore\RepositoryCore.csproj" />
   </ItemGroup>
 
 </Project>

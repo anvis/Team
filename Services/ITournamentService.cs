@@ -8,6 +8,6 @@ namespace Services
 {
     public interface ITournamentService
     {
-        List<Tournament> GetTournaments();
+        List<Tournament> CreateTournaments();
     }
 }
