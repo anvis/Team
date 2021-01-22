@@ -36,6 +36,11 @@ namespace TEAM_API.Controllers
                 {
                     return BadRequest("Validation Failed");
                 }
+
+                if (!_teamService.ValidateTeam(team))
+                {
+                    return BadRequest("Team with same name is already registered in this tournament");
+                }
                 return  Ok(_teamService.CreateTeam(team));
             }
             catch (Exception e)

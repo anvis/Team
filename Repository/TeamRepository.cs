@@ -23,5 +23,17 @@ namespace Repository
             teamDL.TeamId = team.TeamId;
             return teamDL;
         }
+
+        public List<Team_DL> GetTeams()
+        {
+            var teamslist = Repository.GetAll();
+            List<Team_DL> teams = new List<Team_DL>();
+            foreach (var item in teamslist)
+            {
+                teams.Add(new Team_DL { TeamName = item.TeamName, TournmentCode = item.TournmentCode });
+            }
+
+            return teams;
+        }
     }
 }

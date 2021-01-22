@@ -8,5 +8,6 @@ namespace Services
  public   interface ITeamService
     {
         Team CreateTeam(Team team);
+        bool ValidateTeam(Team team);
     }
 }

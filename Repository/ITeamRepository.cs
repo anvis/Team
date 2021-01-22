@@ -9,5 +9,6 @@ namespace Repository
    public interface ITeamRepository
     {
         Team_DL CreateTeam(Team_DL team);
+        List<Team_DL> GetTeams();
     }
 }
