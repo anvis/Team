@@ -28,11 +28,15 @@ namespace TEAM_API.Controllers
 
         [HttpPost]
         [Route("Team")]
-        public Team CreateTeam(Team team)
+        public ActionResult<Team> CreateTeam(Team team)
         {
             try
             {
-                return _teamService.CreateTeam(team);
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest("Validation Failed");
+                }
+                return  Ok(_teamService.CreateTeam(team));
             }
             catch (Exception e)
             {

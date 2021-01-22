@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using TEAM_API.Utility;
 
 
 namespace TEAM_API
@@ -34,6 +35,7 @@ namespace TEAM_API
             services.AddTransient<ITournamentService, TournamentService>();
             services.AddTransient<ITeamService, TeamService>();
             //services.AddTransient<IConfigurationRepository, ConfigurationRepository>();
+            services.AddSwaggerGen();
             services.AddControllers();
            
         }
@@ -45,10 +47,16 @@ namespace TEAM_API
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseMiddleware(typeof(ExceptionMiddlewareExtensions));
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My Test1 Api v1");
+            });
 
             app.UseEndpoints(endpoints =>
             {
