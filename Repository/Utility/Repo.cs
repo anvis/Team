@@ -9,6 +9,8 @@
     {
         private bool disposed = false;
         private TournamentRepository tournamentRepository;
+        private ConfigurationRepository configurationRepository;
+        private TeamRepository teamRepository;
         public TeamContext Context { get; } = new TeamContext();
 
         
@@ -24,9 +26,34 @@
                 {
                     this.tournamentRepository = RepositoryInstance<TournamentRepository>.GetInstance();
                     tournamentRepository.Repository = new Repository<Tournment>(Context);
-                    //  watchlistRepository.Context = context;
                 }
                 return tournamentRepository;
+            }
+        }
+
+        public IConfigurationRepository ConfigurationRepository
+        {
+            get
+            {
+                if (this.configurationRepository == null)
+                {
+                    this.configurationRepository = RepositoryInstance<ConfigurationRepository>.GetInstance();
+                    configurationRepository.Repository = new Repository<Configurations>(Context);
+                }
+                return configurationRepository;
+            }
+        }
+
+        public ITeamRepository TeamRepository
+        {
+            get
+            {
+                if (this.teamRepository == null)
+                {
+                    this.teamRepository = RepositoryInstance<TeamRepository>.GetInstance();
+                    teamRepository.Repository = new Repository<Team>(Context);
+                }
+                return teamRepository;
             }
         }
 

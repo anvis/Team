@@ -10,7 +10,7 @@ namespace Repository
         public List<Tournament_DL> CreateTournaments()
         {          
             List<Tournment> tournments = new List<Tournment>();
-
+            
             tournments.Add( new Tournment
                {
                 Name = "IPL League",
@@ -51,5 +51,7 @@ namespace Repository
         {
             var watchListList = Repository.GetAll();
         }
+
+       
     }
 }

@@ -1,4 +1,4 @@
-﻿
+﻿using AutoMapper;
 using EntityLayer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,23 +13,26 @@ namespace TEAM_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TournamentController : ControllerBase
+    public class TeamsController : ControllerBase
     {
-        private readonly ILogger<TournamentController> _logger;
-        private readonly ITournamentService _tournamentService;
-        public TournamentController(ILogger<TournamentController> logger, ITournamentService tournamentService)
+        private ITeamService _teamService;
+        private IMapper _mapper;
+
+        private readonly ILogger<TeamsController> _logger;
+       
+        public TeamsController(ILogger<TeamsController> logger, ITeamService teamService)
         {
             _logger = logger;
-            _tournamentService = tournamentService;
+            _teamService = teamService;
         }
 
-        [HttpGet] 
-        [Route("CreateTournment")]
-        public List<Tournament> CreateTournment()
+        [HttpPost]
+        [Route("Team")]
+        public Team CreateTeam(Team team)
         {
             try
             {
-                return _tournamentService.CreateTournaments();
+                return _teamService.CreateTeam(team);
             }
             catch (Exception e)
             {
@@ -37,6 +40,6 @@ namespace TEAM_API.Controllers
                 throw;
             }
         }
-
     }
 }
+     

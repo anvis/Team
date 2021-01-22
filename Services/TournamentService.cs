@@ -20,6 +20,7 @@ namespace Services
 
         public List<Tournament> CreateTournaments()
         {
+            repo.ConfigurationRepository.setConfigurations();
             List<Tournament_DL> tournmentDetails = repo.TournamentRepository.CreateTournaments();
             return MapperProfile.MapList<Tournament_DL, Tournament>(_mapper, tournmentDetails);            
         }

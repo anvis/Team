@@ -13,6 +13,8 @@ namespace TEAM_API.Dependencies
         public MappingProfiles()
         {
             CreateMap<Tournament_DL, Tournament>().ReverseMap();
+            CreateMap<Team_DL, Team>().ReverseMap();
+            CreateMap<Player_DL, Player>().ReverseMap();
         }
     }
 }

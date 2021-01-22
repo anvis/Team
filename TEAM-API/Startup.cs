@@ -32,6 +32,8 @@ namespace TEAM_API
             services.AddDbContext<TeamContext>(opt => opt.UseInMemoryDatabase("TeamDB",null));
             services.AddAutoMapper(typeof(Startup));
             services.AddTransient<ITournamentService, TournamentService>();
+            services.AddTransient<ITeamService, TeamService>();
+            //services.AddTransient<IConfigurationRepository, ConfigurationRepository>();
             services.AddControllers();
            
         }
