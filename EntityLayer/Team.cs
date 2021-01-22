@@ -17,6 +17,7 @@ namespace EntityLayer
         [Required(ErrorMessage = "JerseyColor is required")]
         [StringLength(30)]
         public string JerseyColor { get; set; }
+        [Required]
         public List<Player> Players { get; set; }
     }
 }
