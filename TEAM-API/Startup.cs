@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using TEAM_API.Utility;
 
 
 namespace TEAM_API
@@ -46,7 +47,7 @@ namespace TEAM_API
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseMiddleware(typeof(ExceptionMiddlewareExtensions));
             app.UseRouting();
 
             app.UseAuthorization();
